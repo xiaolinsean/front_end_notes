@@ -13,7 +13,11 @@
 
 
 ## 对BFC规范(块级格式化上下文：block formatting context)的理解
-
+> 可参考：
+> 
+> - [https://www.w3cplus.com/css/understanding-bfc-and-margin-collapse.html](https://www.w3cplus.com/css/understanding-bfc-and-margin-collapse.html)
+> - [https://segmentfault.com/a/1190000009545742](https://segmentfault.com/a/1190000009545742)
+> - [http://www.cnblogs.com/lhb25/p/inside-block-formatting-ontext.html](http://www.cnblogs.com/lhb25/p/inside-block-formatting-ontext.html)
 
 ## 怎么让Chrome支持小于12px 的文字？
 
@@ -26,7 +30,7 @@
 
 
 ## text-size-adjust的取值及作用
-> 取值：
+>  取值：
 >
 >- auto：文本大小根据设备尺寸进行调整。（默认）
 >
@@ -34,7 +38,7 @@
 >
 >- `<percentage>`：用百分比来指定文本大小在设备尺寸不同的情况下如何调整。
 >
->检索或设置移动端页面中对象文本的大小调整。
+> 检索或设置移动端页面中对象文本的大小调整。
 >- 该属性只在移动设备上生效；
 >  
 >- 如果你的页面没有定义meta viewport，此属性定义将无效；
