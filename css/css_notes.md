@@ -162,16 +162,39 @@
 参考:[https://juejin.im/post/6844903630655471624?spm=a2c6h.12873639.0.0.6fec2e94fBM0Jl](https://juejin.im/post/6844903630655471624?spm=a2c6h.12873639.0.0.6fec2e94fBM0Jl)
 
 
-## 14、移动端适配 1px 的问题 以及解决方案 // TODO
+## 14、移动端适配 1px 的问题 以及解决方案
+> 
+> 设备像素比(dpr) ＝ 物理像素 / 设备独立像素(css像素px)，在 dpr > 1 的屏幕上，1px 像素会显示成多个（dpr个）物理像素，所以会导致看起来较粗。解决方法有如下几种：
+>
+> - （1）border-image：圆角无法实现
+> 
+> - （2）background-image
+> 
+> - （3）背景图渐变：background-image: linear-gradient(top, transparent 50%, $color 50%),
+> 
+> - （4）0.5px方案
+> 
+> - （5）伪元素 + transform scale方案
+> 
+> 其实很多移动端的知名网站，如天猫，淘宝、京东都没有单独处理 1px 像素的问题，腾讯新闻使用的 伪元素 + transform scale方案 
 
+参考：[Web移动端适配方案](https://juejin.im/post/6894044091836563469)
 
+## 15、如何处理移动端适配问题？
+> 
+> - （1）meta viewport 设置 scale=1.0 配合flex、百分比、媒体查询等，一般设计稿是 750 * 1334 的，代码里写的 px 值需要在设计稿基础上除以 2；（这种方案更像是响应式布局）
+> 
+> - （2）手淘的 Flexible 方案，该方案基于rem, 根据屏幕宽度和DPR，动态设置 meta viewport 中的 scale （1/DPR）,以及动态设置 html 的 font-size (document.documentElement.clientWidth / 10),该方法只针对 IOS 有高清显示效果，因为安卓的DPR不规范，所以安卓里都认为 DPR = 1；
+> 
+> - （3）viewport 方案，即使用 vw 和 vh 单位，实际上 Flexible 方案是 viewport 方案的过渡方案
+> 
+> - （4）高清显示方案，同样是基于rem，安卓和IOS的DPR都考虑进来了，基准值为100（为了好计算），其html的 font-size 只跟 dpr 有关
+> 
+> （2）和（3）的理念是一样的，在越宽的屏幕上，元素会越大，因为 html 的 font-size 的值是跟屏幕宽度有关；而（4）是屏幕越大，元素大小不变，因为 html 的 font-size 的值是跟DPR有关
+> 
+> 
 
-
-## 15、如何处理移动端适配问题？ // TODO
-
-
-
-
+参考：[使用Flexible实现手淘H5页面的终端适配](https://github.com/amfe/article/issues/17)、[Web移动端适配方案](https://juejin.im/post/6894044091836563469)、[手机端页面自适应解决方案—rem布局](https://segmentfault.com/a/1190000007350680)
 
 ## 16、Css 实现 div 宽度自适应，宽高保持等比缩放
 > - （1） 使用 padding-top 或 padding-bottom
@@ -213,3 +236,8 @@
 ## 22、css3新增了哪些属性？列举一些？ // TODO
 
 
+## 23、css 中的 currentColor 是干什么的？ // TODO
+> 
+> currentColor 当前元素的color值。如果当前元素没有在CSS里显示地指定一个color值，那它的颜色值就遵从CSS规则，从父级元素继承而来。可以在任何需要写颜色的地方使用currentColor这个变量
+> 
+> 参考：[CSS currentColor 变量的使用](https://www.cnblogs.com/Wayou/p/css-currentColor.html)
