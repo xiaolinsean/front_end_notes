@@ -43,7 +43,7 @@
     （6）阻止冒泡：React合成事件的冒泡并不是真的冒泡，而是节点的遍历。因此，阻止合成事件的冒泡不会阻止原生事件的冒泡，但是阻止原生事件的冒泡会阻止合成事件的冒泡。
 
 
-参考：[https://zhuanlan.zhihu.com/p/49067231](https://zhuanlan.zhihu.com/p/49067231)、[https://www.cnblogs.com/forcheng/p/13187388.html](https://www.cnblogs.com/forcheng/p/13187388.html)
+参考：[https://zhuanlan.zhihu.com/p/49067231](https://zhuanlan.zhihu.com/p/49067231)、[https://www.cnblogs.com/forcheng/p/13187388.html](https://www.cnblogs.com/forcheng/p/13187388.html)、[React 事件系统工作原理](https://juejin.cn/post/6909271104440205326)
 
 
 ## 3、 react 中组件通信方式有哪些？

@@ -184,13 +184,15 @@
 > 
 > - （1）meta viewport 设置 scale=1.0 配合flex、百分比、媒体查询等，一般设计稿是 750 * 1334 的，代码里写的 px 值需要在设计稿基础上除以 2；（这种方案更像是响应式布局）
 > 
-> - （2）手淘的 Flexible 方案，该方案基于rem, 根据屏幕宽度和DPR，动态设置 meta viewport 中的 scale （1/DPR）,以及动态设置 html 的 font-size (document.documentElement.clientWidth / 10),该方法只针对 IOS 有高清显示效果，因为安卓的DPR不规范，所以安卓里都认为 DPR = 1；
+> - （2）手淘的 Flexible 方案，该方案基于rem, 根据屏幕宽度和 DPR，动态设置 meta viewport 中的 scale （1/DPR）,以及动态设置 html 的 font-size (document.documentElement.clientWidth / 10),该方法只针对 IOS 有高清显示效果，因为安卓的DPR不规范，所以安卓里都认为 DPR = 1；
 > 
 > - （3）viewport 方案，即使用 vw 和 vh 单位，实际上 Flexible 方案是 viewport 方案的过渡方案
 > 
 > - （4）高清显示方案，同样是基于rem，安卓和IOS的DPR都考虑进来了，基准值为100（为了好计算），其html的 font-size 只跟 dpr 有关
 > 
 > （2）和（3）的理念是一样的，在越宽的屏幕上，元素会越大，因为 html 的 font-size 的值是跟屏幕宽度有关；而（4）是屏幕越大，元素大小不变，因为 html 的 font-size 的值是跟DPR有关
+> 
+> （2）有一个问题就是通过 rem 计算出来的 px 单位会有小数问题
 > 
 > 
 
@@ -241,3 +243,24 @@
 > currentColor 当前元素的color值。如果当前元素没有在CSS里显示地指定一个color值，那它的颜色值就遵从CSS规则，从父级元素继承而来。可以在任何需要写颜色的地方使用currentColor这个变量
 > 
 > 参考：[CSS currentColor 变量的使用](https://www.cnblogs.com/Wayou/p/css-currentColor.html)
+
+## 24、为什么要使用 css 预处理器？ // TODO
+
+主要是四方面：变量（variables），代码混合（ mixins），嵌套（nested rules）以及 代码模块化(Modules)。
+
+- 变量（variables）
+  
+  当某个特定的值在多处用到时，变量就是一种简单而有效的抽象方式，设置变量后，不仅便于记忆、阅读和理解，特别是在批量修改起来会很方便。css 中也开始引入变量了（[使用CSS自定义属性（变量）](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties)）
+
+- 代码混合（ mixins）
+  
+  将相同功能实现的代码提取出来，然后在需要的地方调用，在调用时可以接受参数。
+
+- 嵌套（nested rules）
+
+    选择符嵌套是文件内部的代码组织方式，它可以让一系列相关的规则呈现出层级关系。在之前的话需要手动维护，且不便于修改；在 css 预处理器中，这种嵌套管理很好管理；
+
+- 代码模块化(Modules)
+    
+    首先，可以将大文件按照一定功能范围切割成不同的小文件，然后在入口文件中，逐层引入所依赖的文件，这样的优势在于：（1）小文件相对于大文件更容易管理；（2）按照功能结构划分后，目录结构上更为清晰。
+    css 中也开始支持 @import 引入了（[@import CSS@规则](https://developer.mozilla.org/zh-CN/docs/Web/CSS/%40import)）

@@ -12,9 +12,9 @@ React-Router怎么设置重定向？
 ## `1、React Router v4 中使用 <Switch>关键字的作用？`
 
 
-- 官网中对于 <Switch> 的解释： 它只会渲染第一个符合条件的 <Route> 或 <Redirect> ，避免重复匹配，<Switch> 需要在 <Router> 中使用；
+- 官网中对于 `<Switch>` 的解释： 它只会渲染第一个符合条件的 `<Route>` 或 `<Redirect>` ，避免重复匹配，`<Switch>` 需要在 `<Router>` 中使用；
 
-- 对于 <Route>s 来说，如果有的链接既可以被路由A匹配，又可以被路由B匹配，那么 Router 会同时渲染它们，这便于我们通过多个 <Route> 来组合页面结构。
+- 对于 `<Route>s` 来说，如果有的链接既可以被路由A匹配，又可以被路由B匹配，那么 `Router` 会同时渲染它们，这便于我们通过多个 `<Route>` 来组合页面结构。
 
 -------------------------------------------------------------------------------------------------------
 
@@ -30,18 +30,18 @@ React-Router怎么设置重定向？
 
 ## `3、React-Router的路由有几种模式？`
 
-- hash 模式
+- `hash` 模式
 
-    - 改变 hash 方法
+    - 改变 `hash` 方法
 
-        直接改变window.location.hash的值、
+        直接改变 `window.location.hash` 的值、
         
         通过 a 标签 
         ```html 
         <a href="#login">edit</a>
         ```
 
-    - 监听hash
+    - 监听 `hash`
 
      ```js
      window.onhashchange = function(hash) {
@@ -53,14 +53,14 @@ React-Router怎么设置重定向？
 
      ```
 
-    - hash 的劣势：
+    - `hash` 的劣势：
         - 最直观的，多个#看着就是难受，那我不管真的感觉丑（把肤浅打在公屏上）
         - 配合后端困难 对于部分需要重定向的操作，后端无法获取hash部分内容，导致后台无法取得url中的数据
         - 服务器端无法准确跟踪前端路由信息
 
-- history 模式
+- `history` 模式
 
-    - 这个模式就是基于HTML5的History接口，主要方法有以下几个：
+    - 这个模式就是基于HTML5的 `History` 接口，主要方法有以下几个：
         ```js
         History.forward() // 前进
         History.back()  // 后退
@@ -101,11 +101,122 @@ React-Router怎么设置重定向？
 
 ## `5、React-Router的<Link>、标签和<a>标签有什么区别？`
 
-- <a>标签: 页面的跳转，页面跳转后会导致整个页面重新渲染；
+- `<a>` 标签: 页面的跳转，页面跳转后会导致整个页面重新渲染；
 
-- <Link>： `React-Router-dom` 中提供的组件，提供页面内组件间的跳转，可以实现页面局部更新，提高性能；
-            Link 组件最终会渲染为 HTML 标签 <a>，它的 to、query、hash 属性会被组合在一起并渲染为 href 属性。虽然 Link 被渲染为超链接，但在内部实现上拦截了浏览器的默认行为，然后调用了history.pushState（history.replaceState） 方法;
+- `<Link>`： `React-Router-dom` 中提供的组件，提供页面内组件间的跳转，可以实现页面局部更新，提高性能；
+            Link 组件最终会渲染为 HTML 标签 `<a>`，它的 to、query、hash 属性会被组合在一起并渲染为 href 属性。虽然 Link 被渲染为超链接，但在内部实现上拦截了浏览器的默认行为，然后调用了history.pushState（history.replaceState） 方法;
 
-- <NavLink>： <NavLink>是<Link>的一个特定版本，会在匹配上当前的url的时候给已经渲染的元素添加参数，组件的属性有：activeClassName、activeStyle、exact、strict
+- `<NavLink>`： `<NavLink>` 是 `<Link>` 的一个特定版本，会在匹配上当前的url的时候给已经渲染的元素添加参数，组件的属性有：activeClassName、activeStyle、exact、strict
 
 ------------------------------------------------------------------------------------------------------
+
+## `6、react-router 中 history 路由配置
+
+- 本地开发调试（webpack-dev-server）
+
+    当使用 HTML5 History API 时, 所有的 404 请求都会响应 index.html 的内容。 将 `devServer.historyApiFallback` 设为 true开启：
+
+    ```js
+    module.exports = {
+    //...
+        devServer: {
+            historyApiFallback: true
+        }
+    };
+
+    ```
+    也可以通过配置，指定具体的 rewrite
+
+    ```js
+    module.exports = {
+    //...
+        devServer: {
+            historyApiFallback: {
+            rewrites: [
+                { from: /^\/$/, to: '/views/landing.html' },
+                { from: /^\/subpage/, to: '/views/subpage.html' },
+                { from: /./, to: '/views/404.html' }
+            ]
+            }
+        }
+    };
+
+    ```
+
+    参考：[devServer.historyApiFallback](https://webpack.docschina.org/configuration/dev-server/#devserverhistoryapifallback)
+
+- nginx 部署
+
+    - 部署到nginx根目录，只需要对应的NGINX配置即可：
+
+        ```shell
+        # nginx配置
+        location / {
+            root   html;
+            index  index.html;
+            # url 切换时始终返回index.html
+            try_files $uri /index.html;
+        }
+        ```
+    
+    - 部署到nginx子目录
+
+        假设部署到/app/build/目录下，访问路径：http://localhost/app/build/
+
+        ```shell
+        # nginx配置
+        location /app/build/ {
+            root   html;
+            index  index.html;
+            # url 切换时始终返回index.html
+            try_files $uri /app/build/index.html;
+        }
+        ```
+
+        ```js
+        // package.json
+        "homepage": "http://localhost/app/build/",
+        ```
+
+        ```jsx
+        // react-router路由配置
+        // 注意指定basename，如果本地和服务端路径不一致，可以通过process.env.NODE_ENV === 'production' 来判断区分
+        <BrowserRouter basename='/app/build/'>
+        </BrowserRouter>
+        ```
+
+
+------------------------------------------------------------------------------------------------------
+
+## `7、react-router 中根据路由按需加载`
+
+在浏览器端，可以使用 `React.lazy` 和 `Suspense`，  `React.lazy` 函数能让你像渲染常规组件一样处理动态引入（的组件）。`Suspense` 组件中渲染 lazy 组件，使得我们可以使用在等待加载 lazy 组件时做优雅降级（如 loading 指示器等）。具体使用代码如下：
+
+```js
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+const App = () => (
+  <Router>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Switch>
+        <Route exact path="/" component={lazy(() => import(/* webpackChunkName: "Home" */ './routes/Home'))}/>
+        <Route path="/about" component={lazy(() => import(/* webpackChunkName: "About" */ './routes/About'))}/>
+      </Switch>
+    </Suspense>
+  </Router>
+);
+```
+- 通过 `webpackChunkName` ,可以设置分割后每一个文件的文件名；
+
+- `Suspense` 可以放在懒加载组件之上的任何位置， 可以通过包含多个懒加载组件，fallback 属性接受任何在组件加载过程中你想展示的 React 元素。
+
+- `React.lazy` 目前只支持默认导出（default exports）。如果你想被引入的模块使用命名导出（named exports），你可以创建一个中间模块，来重新导出为默认模块。
+
+- `React.lazy` 和 `Suspense` 技术还不支持服务端渲染。如果你想要在使用服务端渲染的应用中使用，推荐 `Loadable Components` 这个库.
+
+------------------------------------------------------------------------------------------------------
+
+
+
+

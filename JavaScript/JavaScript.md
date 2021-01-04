@@ -53,6 +53,7 @@
         console.log(typeof []);   //object
         console.log(typeof function(){});   //function
         console.log(typeof {});   //object
+        console.log(typeof Symbol);   //symbol
     （2）instanceof=>boolean ： 能够判断具体的引用类型、但不能用于判断基本数据类型
         console.log("1" instanceof String);   //flase
         console.log(new String("1") instanceof String);  //true
@@ -72,6 +73,7 @@
         console.log(Object.prototype.toString.call([]));         //[object Array]
         console.log(Object.prototype.toString.call(function() {}));    //[object Function]
         console.log(Object.prototype.toString.call({}));     //[object Object]
+        console.log(Object.prototype.toString.call(Symbol()));     //[object Symbol]
 参考：[https://www.cnblogs.com/yuanzhiguo/p/7811990.html](https://www.cnblogs.com/yuanzhiguo/p/7811990.html)
 
 ## 4、js 小数计算精度问题及解决方法
@@ -201,10 +203,44 @@
 
 参考：[https://www.cnblogs.com/liugang-vip/p/5616484.html](https://www.cnblogs.com/liugang-vip/p/5616484.html)
 
-## 11、有哪些跨域的方法 // TODO
+## 11、有哪些跨域的方法
+
+    浏览器的同源策略，所谓同源是指"协议+域名+端口"三者相同，
+
+    不受同源策略限制的三个标签：
+
+    <img src=XXX>
+    <link href=XXX>
+    <script src=XXX>
+
+    1. jsonp： 利用 <script> 标签没有跨域限制的漏洞，后端接口将回调函数以及数据拼接起来返回前端。缺点：（1）缺点是仅支持get方法具有局限性,（2）需要后端支持
+
+    2、CORS： 需要浏览器和后端同时支持：Access-Control-Allow-Origin 就可以开启 CORS，设置对应哪些域名可以访问。简单请求会直接发请求，复杂请求会先发 option 方法，确定后再发送真实请求：
+
+        1) 简单请求
+        只要同时满足以下两大条件，就属于简单请求
+        条件1：使用下列方法之一：
+
+        GET
+        HEAD
+        POST
+
+        条件2：Content-Type 的值仅限于下列三者之一：
+
+        text/plain
+        multipart/form-data
+        application/x-www-form-urlencoded
+
+        不属于简单请求的都是复杂请求。
+
+    3、nginx反向代理: 主要是 nginx 设置，不涉及到前端的修改
+
+    4、websocket
+
+    5、中间服务器代理：我们使用本地开发时，通过 webpack-dev-server 起一个本地 node 服务，设置 proxy 实现跨域调试。
 
 
-
+参考：[九种跨域方式实现原理（完整版）](https://juejin.cn/post/6844903767226351623)
 ## 12、谈谈对 Function 中的 arguments的理解
 
     arguments 是一个类数组对象，此对象包含传递给函数的每个参数，第一个参数在索引0处。因此可以用 arguments[0] 来获取第一个参数,它类似于 Array，但除了length属性和索引元素之外没有任何Array属性。
@@ -318,26 +354,28 @@
     以下事件属于宏任务：
         setInterval()
         setTimeout()
+        postMessage
 
     以下事件属于微任务
         new Promise()
-        new MutaionObserver()
+        async await
+        new MutaionObserver()（DOM变化监听）
 
     在一个事件循环中，异步事件返回结果后会被放到一个任务队列中。然而，根据这个异步事件的类型，这个事件实际上会被对应的宏任务队列或者微任务队列中去。并且在当前执行栈为空的时候，主线程会 查看微任务队列是否有事件存在。如果不存在，那么再去宏任务队列中取出一个事件并把对应的回到加入当前执行栈；如果存在，则会依次执行队列中事件对应的回调，直到微任务队列为空，然后去宏任务队列中取出最前面的一个事件，把对应的回调加入当前执行栈...如此反复，进入循环。
 
     console.log('script start');
 
     setTimeout(function() {
-    console.log('setTimeout');
+        console.log('setTimeout');
     }, 0);
 
     new Promise((resolve) => {
         console.log('Promise')
         resolve()
     }).then(function() {
-    console.log('promise1');
+        console.log('promise1');
     }).then(function() {
-    console.log('promise2');
+        console.log('promise2');
     });
 
     console.log('script end');
@@ -530,6 +568,14 @@
 > 
 > 参考：[JavaScript专题之函数柯里化](https://github.com/mqyqingfeng/Blog/issues/42)、[JavaScript函数柯里化](https://juejin.cn/entry/6844903512942313479)、[javascript 函数 add(1)(2)(3)(4)实现无限极累加](https://www.cnblogs.com/oxspirt/p/5436629.html)
 > 
+
+
+## `27、谈谈对函数式编程的理解？` // TODO
+
+
+
+
+参考：[简明 JavaScript 函数式编程——入门篇](https://juejin.cn/post/6844903936378273799)
 
 ## 组合函数、高阶函数 
 [https://segmentfault.com/a/1190000023616150](https://segmentfault.com/a/1190000023616150)
