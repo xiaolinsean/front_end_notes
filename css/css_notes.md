@@ -14,11 +14,36 @@
 
 
 ## 2、对BFC规范(块级格式化上下文：block formatting context)的理解
-> 可参考：
-> 
-> - [https://www.w3cplus.com/css/understanding-bfc-and-margin-collapse.html](https://www.w3cplus.com/css/understanding-bfc-and-margin-collapse.html)
-> - [https://segmentfault.com/a/1190000009545742](https://segmentfault.com/a/1190000009545742)
-> - [http://www.cnblogs.com/lhb25/p/inside-block-formatting-ontext.html](http://www.cnblogs.com/lhb25/p/inside-block-formatting-ontext.html)
+
+- 概念
+  Block-Formatting-context 块级格式化上下文，格式化上下问的意思是：在浏览器的某一块区域里面有一套自己的渲染规则，不影响外部BFC内部元素不影响外部元素。
+  
+- 作用
+  - 垂直方向上margin重叠 ，若不想重叠可以放在两个不同的BFC里面
+
+  - 利用浮动元素不覆盖BFC的特点做双栏布局
+
+  - 可让仅包含浮动元素的div自适应高度
+
+  - BFC清除浮动
+
+- BFC可以解决的问题
+  - 1.（BFC与margin）同一个父级块框下，兄弟元素和父子元素的margin会发生重叠问题
+  - 2.（BFC与float）父元素高度塌陷问题、兄弟元素覆盖问题
+  
+- BFC触发条件
+  - float 不为none （浮动元素）
+  - overflow 不为 visible
+  - display 为 flex ,inline-flex,inline-block,table-cell,table-caption
+  - position为 absolute , fixed （绝对定位元素）
+  - 根元素
+
+可参考：
+
+- [https://www.w3cplus.com/css/understanding-bfc-and-margin-collapse.html](https://www.w3cplus.com/css/understanding-bfc-and-margin-collapse.html)
+- [https://segmentfault.com/a/1190000009545742](https://segmentfault.com/a/1190000009545742)
+- [http://www.cnblogs.com/lhb25/p/inside-block-formatting-ontext.html](http://www.cnblogs.com/lhb25/p/inside-block-formatting-ontext.html)
+
 
 ## 3、怎么让Chrome支持小于12px 的文字？
 
@@ -226,25 +251,198 @@
 > 不可继承的样式：border padding margin width height ;
 
 
-## 19、为什么要清除浮动，以及清除浮动的方法有哪些？ // TODO
+## 19、为什么要清除浮动，以及清除浮动的方法有哪些？
+
+- 浮动会使得元素脱离普通的文档流布局，会导致父元素"高度塌陷"（即父元素的高度不会被子元素撑起来），这样会影响到父元素后面元素的布局。
+  
+- 清除方法
+  - clear：both，添加空元素或者使用伪类
+    ```css
+    ::after{
+        content: "";
+        clear: both;
+        display: block;
+        visibility: hidden;
+        height: 0;
+    }
+    ```
+  - overflow:hidden 
+
+## 20、三列布局，左右固定，中间自适应
+
+- flex
+  ```html
+  <div class="contain">
+    <div class="left"></div>
+    <div class="main"></div>
+    <div class="right"></div>
+  </div>
+  ```
+
+  ```css
+  .contain{
+      display: flex;
+      height: 600px;
+  }
+  .left, .right{
+      width: 200px;
+      height: 100%;
+      border: 2px solid green;
+  }
+  .main{
+      flex: 1;
+      border: 2px solid red;
+  }
+  ```
+
+- padding + absolute
+  ```css
+  .contain{
+      height: 600px;
+      padding: 0 200px;
+      position: relative;
+  }
+  .left, .right{
+      position: absolute;
+      width: 200px;
+      height: 100%;
+      top: 0;
+      border: 2px solid green;
+  }
+  .left{
+      left: 0;
+  }
+  .right{
+      right: 0;
+  }
+  .main{
+      width: 100%;
+      height: 100%;
+      border: 2px solid red;
+  }
+  ```
+
+- margin + absolute
+  ```css
+  .contain{
+      height: 600px;
+      position: relative;
+  }
+  .left, .right{
+      position: absolute;
+      width: 200px;
+      height: 100%;
+      border: 2px solid green;
+      top: 0;
+  }
+  .left{
+      left: 0;
+  }
+  .right{
+      right: 0;
+  }
+  .main{
+      margin: 0 200px;
+      height: 100%;
+      border: 2px solid red;
+  }
+  ```
+
+- float + margin
+  ```html
+  <div class="contain">
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="main"></div>
+  </div>
+  ```
+  ```css
+  .contain{
+      height: 600px;
+  }
+  .left, .right{
+      width: 200px;
+      height: 100%;
+      border: 2px solid green;
+  }
+  .left{
+      float: left;
+  }
+  .right{
+      float: right;
+  }
+  .main{
+      margin: 0 200px;
+      height: 100%;
+      border: 2px solid red;
+  }
+  ```
+...
 
 
-## 20、三列布局，左右固定，中间自适应 // TODO
+## 21、水平垂直居中的方法有哪些？
 
+- absolute + 负margin (需知道宽高)
+  ```css
+  .inner{
+    position:absolute;
+    margin-left:-1/2*width;
+    margin-top:-1/2*width;
+    top:50%;
+    left:50%; 
+  }
+  ```
 
-## 21、水平垂直居中的方法有哪些？ // TODO
+- absolute + auto margin
+  ```css
+  .inner{
+    position:absolute;
+    margin: auto;
+    top:0;
+    left:0;
+    right :0;
+    bottom:0;
+  }
+  ```
 
+- absolute + transform
+  ```css
+  .inner{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+  }
+  ```
+- table-cell
+  ```css
+  .outer {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+  }
+  ```
 
+- flex
+  ```css
+  .outer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  ```
 ## 22、css3新增了哪些属性？列举一些？ // TODO
 
 
-## 23、css 中的 currentColor 是干什么的？ // TODO
+
+## 23、css 中的 currentColor 是干什么的？
 > 
 > currentColor 当前元素的color值。如果当前元素没有在CSS里显示地指定一个color值，那它的颜色值就遵从CSS规则，从父级元素继承而来。可以在任何需要写颜色的地方使用currentColor这个变量
 > 
 > 参考：[CSS currentColor 变量的使用](https://www.cnblogs.com/Wayou/p/css-currentColor.html)
 
-## 24、为什么要使用 css 预处理器？ // TODO
+## 24、为什么要使用 css 预处理器？
 
 主要是四方面：变量（variables），代码混合（ mixins），嵌套（nested rules）以及 代码模块化(Modules)。
 
@@ -264,3 +462,25 @@
     
     首先，可以将大文件按照一定功能范围切割成不同的小文件，然后在入口文件中，逐层引入所依赖的文件，这样的优势在于：（1）小文件相对于大文件更容易管理；（2）按照功能结构划分后，目录结构上更为清晰。
     css 中也开始支持 @import 引入了（[@import CSS@规则](https://developer.mozilla.org/zh-CN/docs/Web/CSS/%40import)）
+
+
+## 25、浏览器将rem转成px时有精度误差怎么办？
+
+当使用 Rem 作为 css 单位，其最终转换成 px 显示时，可能会出现小数，会出现显示误差，例如导致原本一行可以放下的由于小数的四舍五入，现在出现换行了。
+
+这种情况，在 REM 布局时，建议，外层容器使用百分比或者 flex, 具体固定宽高的元素再使用 REM。
+
+## 26 z-index 的理解？
+
+1、首先先看要比较的两个元素是否处于同一个层叠上下文中：
+  1.1如果是，谁的层叠等级大，谁在上面（怎么判断层叠等级大小呢？——看“层叠顺序”图）。
+  1.2如果两个元素不在统一层叠上下文中，请先比较他们所处的层叠上下文的层叠等级。
+
+2、当两个元素层叠等级相同、层叠顺序相同时，在DOM结构中后面的元素层叠等级在前面元素之上。
+
+3、层叠顺序规则
+
+  z-index > 0 大于 z-index: auto/z-index:0 大于 inline/inline-block水平盒子 大于 float浮动盒子 大于 block块级盒子 大于 z-index < 0 
+
+
+参考：[彻底搞懂CSS层叠上下文、层叠等级、层叠顺序、z-index](https://juejin.cn/post/6844903667175260174)

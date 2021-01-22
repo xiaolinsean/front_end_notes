@@ -5,6 +5,8 @@
 - [5、import { Button } from 'antd'，打包的时候只打包 button，分模块加载，是怎么做到的](#5import--button--from-antd打包的时候只打包-button分模块加载是怎么做到的)
 - [6、Webpack 打包出来的体积太大，如何优化体积？ // TODO](#6webpack-打包出来的体积太大如何优化体积--todo)
 - [7、@babel/polyfill、@babel/runtime、@babel/plugin-transform-runtime 的区别和联系？](#7babelpolyfillbabelruntimebabelplugin-transform-runtime-的区别和联系)
+- [8、package.json 中的 main 和 module 字段？](#8packagejson-中的-main-和-module-字段)
+- [9、dependencies 、 devDependencies 和 peerDependencies？](#9dependencies--devdependencies-和-peerdependencies)
 
 
 
@@ -91,3 +93,35 @@ require('antd/lib/button/style');
 
 ----------------------------------------------------------------------------------------------------------------------
 
+## 8、package.json 中的 main 和 module 字段？
+
+main 和 module 主要是为了区分 CommonJS 规范和 ES6 的 module 新特性。
+
+- main: 针对的 CommonJS 规范，运行时加载（其实是加载的是 exports 对象的某个属性），
+
+- module： 针对的 ES6 的 module 新特性，编译时加载，这样在编译时即可分析出对应模块中有哪些方法是使用到的，这样更利于 Tree-Shaking 。
+
+由于在早期很多 npm 包都是遵循 CommonJS 规范的，统一取得 main 字段指定的文件作为入口。为了引入对 ES6 的 module 新特性的支持，同时也支持原有的 CommonJS 规范，所以就引入了 module 字段。
+
+----------------------------------------------------------------------------------------------------------------------
+
+## 9、dependencies 、 devDependencies 和 peerDependencies？
+
+- dependencies
+  
+  实际的依赖，即项目线上运行也需要的依赖项。
+  `npm i xxx -S` 或者 `npm i xxx --save` 来安装一个包，并且添加到 package.json 的 dependencies 里面
+
+- devDependencies
+  
+  开发中使用的依赖，它区别于实际的依赖。也就是说，在线上状态不需要使用的依赖，就是开发依赖。最终目的是为了减少 node_modules 目录的大小以及 npm install 花费的时间。
+
+  `npm i xxx -D` 或者 `npm i xxx --save-dev` 来安装一个包
+
+  常见的 构建工具（webpack 、gulp 等）、预处理器（less, stylus, sass, scss，babel-loader等，需注意 babel-runtime 是 dependencies）、测试工具（jest，chai等）都是安装成 devDependencies
+
+- peerDependencies
+  
+  这类主要是用于插件对于本体的依赖，插件想要自己正常运行，就需要使用者把本地依赖进来，这个主要是在自己开发和发布包的时候会用到，比如，你开发了一个基于 react 的组件，那么 peerDependencies 中就需要加入相关的 react 和 react-dom 依赖。
+
+参考：[Node.js 中的依赖管理](https://zhuanlan.zhihu.com/p/56002037)

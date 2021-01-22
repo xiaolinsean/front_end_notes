@@ -1,3 +1,27 @@
+- [1、constructor `super()`和`super(props)`有什么区别？](#1constructor-super和superprops有什么区别)
+- [2、react 中的事件机制](#2react-中的事件机制)
+- [3、 react 中组件通信方式有哪些？](#3-react-中组件通信方式有哪些)
+- [4、react 中的 setState 的第一个参数和第二个参数分别是什么？](#4react-中的-setstate-的第一个参数和第二个参数分别是什么)
+- [5、受控组件和非受控组件的区别？](#5受控组件和非受控组件的区别)
+- [6、简述一下 react 的生命周期](#6简述一下-react-的生命周期)
+- [7、新旧生命周期对比，新增了哪些生命周期？ 哪些生命周期是不建议使用的？](#7新旧生命周期对比新增了哪些生命周期-哪些生命周期是不建议使用的)
+- [8、getDerivedStateFromError() 和 componentDidCatch() 分别是什么作用，有什么区别？](#8getderivedstatefromerror-和-componentdidcatch-分别是什么作用有什么区别)
+- [9、React 中的 PureComponent 和 Component 有什么区别？](#9react-中的-purecomponent-和-component-有什么区别)
+- [10、react 中的列表 key 属性的作用？](#10react-中的列表-key-属性的作用)
+- [11、react 的 Virtual DOM](#11react-的-virtual-dom)
+- [12、react 中的 dom-diff 大概原理？](#12react-中的-dom-diff-大概原理)
+- [13、 React Fiber](#13-react-fiber)
+- [14、react 中的高阶组件 // TODO](#14react-中的高阶组件--todo)
+- [15、react 中的 context // TODO](#15react-中的-context--todo)
+- [16、react 中的 refs 和 refs 转发](#16react-中的-refs-和-refs-转发)
+- [17、react 中使用 refs 和 js 原生获取 DOM 节点（类似 document.getElementById）的对比, 为什么建议使用 refs](#17react-中使用-refs-和-js-原生获取-dom-节点类似-documentgetelementbyid的对比-为什么建议使用-refs)
+- [18、用过哪些 hooks ？](#18用过哪些-hooks-)
+- [19、hooks 相对于传统 class 有哪些特点？](#19hooks-相对于传统-class-有哪些特点)
+- [20、hooks 如何模拟 class 的各个生命周期？](#20hooks-如何模拟-class-的各个生命周期)
+- [21、hooks 中的 effect 什么时候执行？ effect 的清除函数什么时候执行？](#21hooks-中的-effect-什么时候执行-effect-的清除函数什么时候执行)
+- [22、useMemo 和 useCallback ? 为什么能进行性能优化？](#22usememo-和-usecallback--为什么能进行性能优化)
+
+
 ## 1、constructor `super()`和`super(props)`有什么区别？
 
     react 中的class 是基于es6的规范实现的, 继承是使用extends关键字实现继承的，子类必须在constructor()中调用super() 方法否则新建实例就会报错，报错的原因是 子类是没有自己的this对象的，它只能继承父类的this对象，然后对其进行加工，而super()就是将父类中的this对象继承给子类的，没有super() 子类就得不到this对象。

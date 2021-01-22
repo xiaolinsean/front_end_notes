@@ -1,3 +1,32 @@
+- [1、原型和原型链](#1原型和原型链)
+- [2、js 的继承方式](#2js-的继承方式)
+- [3、js 数据类型及类型检测](#3js-数据类型及类型检测)
+- [4、js 小数计算精度问题及解决方法](#4js-小数计算精度问题及解决方法)
+- [5、js 中的闭包](#5js-中的闭包)
+- [6、介绍防抖和节流原理、区别以及应用](#6介绍防抖和节流原理区别以及应用)
+- [7、this 指向问题](#7this-指向问题)
+- [8、如何改变 this 指向](#8如何改变-this-指向)
+- [9、js 中的事件机制](#9js-中的事件机制)
+- [10、js 中的事件委托](#10js-中的事件委托)
+- [11、有哪些跨域的方法](#11有哪些跨域的方法)
+- [12、谈谈对 Function 中的 arguments的理解](#12谈谈对-function-中的-arguments的理解)
+- [13、说下 offsetWith 和 clientWidth、offsetHeight 和 clientHeight 的区别，说说 offsetTop，offsetLeft，scrollWidth、scrollHeight 属性都是干啥的](#13说下-offsetwith-和-clientwidthoffsetheight-和-clientheight-的区别说说-offsettopoffsetleftscrollwidthscrollheight-属性都是干啥的)
+- [14、cookie 和session 的区别](#14cookie-和session-的区别)
+- [15、javaScript中的作用域和作用域链](#15javascript中的作用域和作用域链)
+- [16、变量声明提升和函数声明提升](#16变量声明提升和函数声明提升)
+- [17、AMD，CMD，CommonJs，ES6 Module 的区别？](#17amdcmdcommonjses6-module-的区别)
+- [18、JavaScript中的Event Loop（事件循环）机制？](#18javascript中的event-loop事件循环机制)
+- [19、caller与callee的作用以及用法](#19caller与callee的作用以及用法)
+- [20、javascript 中的 垃圾回收 机制？](#20javascript-中的-垃圾回收-机制)
+- [21、JavaScript 中哪些情况会出现 内存泄漏，应该如何避免？](#21javascript-中哪些情况会出现-内存泄漏应该如何避免)
+- [22、js 中如何自定义事件？](#22js-中如何自定义事件)
+- [23、js 中什么是深拷贝和浅拷贝，怎么对数组或者对象进行深拷贝？](#23js-中什么是深拷贝和浅拷贝怎么对数组或者对象进行深拷贝)
+- [24、setTimeout 和 requestAnimationFrame // TODO](#24settimeout-和-requestanimationframe--todo)
+- [25、js 中的执行上下文 // TODO](#25js-中的执行上下文--todo)
+- [26、谈谈对函数柯里化的理解](#26谈谈对函数柯里化的理解)
+- [`27、谈谈对函数式编程的理解？` // TODO](#27谈谈对函数式编程的理解--todo)
+- [组合函数、高阶函数](#组合函数高阶函数)
+
 ## 1、原型和原型链
 
     - 每一个构造函数都拥有一个 prototype 属性，这个属性指向一个对象，也就是原型对象
@@ -323,7 +352,7 @@
 
 ## 17、AMD，CMD，CommonJs，ES6 Module 的区别？
 
-    （1） CommonJS模块是对象，是运行时加载，运行时才把模块挂载在exports之上（加载整个模块的所有），加载模块其实就是查找对象属性。
+    （1） CommonJS 模块是对象，是运行时加载，运行时才把模块挂载在 exports 之上（加载整个模块的所有），加载模块其实就是查找对象属性。
 
     （2） ES Module不是对象，是使用export显示指定输出，再通过import输入。此法为编译时加载，编译时遇到import就会生成一个只读引用。等到运行时就会根据此引用去取加载模块的取值。所以不会加载模块所有方法，仅取所需。
 

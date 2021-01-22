@@ -1,4 +1,4 @@
-- [1、项目中的用户操作记录及错误信息收集 // TODO](#1项目中的用户操作记录及错误信息收集--todo)
+- [1、项目中的用户操作记录及错误信息收集](#1项目中的用户操作记录及错误信息收集)
 - [2、组件库搭建注意事项  // TODO](#2组件库搭建注意事项---todo)
 - [3、node-modules 升级 或 webpack 升级 //TODO](#3node-modules-升级-或-webpack-升级-todo)
 - [4、项目结构组织？ // TODO](#4项目结构组织--todo)
@@ -10,11 +10,63 @@
 - [10、浏览器输入URL后发生了什么？](#10浏览器输入url后发生了什么)
 
 
-## 1、项目中的用户操作记录及错误信息收集 // TODO
+## 1、项目中的用户操作记录及错误信息收集 
+
+- 用户操作记录可以在对应的事件点增加埋点，直接出发接口请求；
+
+- 错误信息：
+  
+  - `window.onerror` ： 可以捕获 运行时的异步和非异步错误；
+    
+    ```js 
+    window.onerror = function (msg, url, row, col, error) {
+        console.log('我知道异步错误了');
+        console.log({
+            msg,  url,  row, col, error
+        })
+        return true;
+    };
+    ```
+  - `addEventListener("error")`: 不仅可以捕获运行时的异步和非异步错误，还可以监控静态资源加载错误，由于网络请求异常不会事件冒泡，因此必须在捕获阶段将其捕捉到才行：
+    ```js
+    window.addEventListener('error', (msg, url, row, col, error) => {
+      console.log('我知道 404 错误了');
+      console.log(
+          msg, url, row, col, error
+      );
+    return true;
+
+    ```
+
+    window.addEventListener(‘error’)与window.onerror的区别
+
+      - 前者能够捕获到资源加载错误，后者不能。
+      - 都能捕获js运行时错误，捕获到的错误参数不同。前者参数为一个event对象；后者为 msg, url, lineNo, columnNo, error一系列参数。event对象中都含有后者参数的信息。
+  - `Promise 错误` : 可以添加一个 Promise 全局异常捕获事件 unhandledrejection, 用来捕获 Promise 实例抛出的异常
+    
+    ```js
+      window.addEventListener("unhandledrejection", function(e){
+      e.preventDefault()
+      console.log('我知道 promise 的错误了');
+      console.log(e.reason);
+      return true;
+      }
+    ```
+
+- 上报方式
+  - 通过 Ajax 发送数据
+  - 动态创建 img 标签的形式
+  
+
+参考:[前端异常监控](https://juejin.cn/post/6844903641619365902)、[前端性能和错误监控](https://juejin.im/post/6844903998412029959)
 
 
 
-参考:[前端性能和错误监控](https://juejin.im/post/6844903998412029959)
+
+
+
+
+
 
 ## 2、组件库搭建注意事项  // TODO
 
