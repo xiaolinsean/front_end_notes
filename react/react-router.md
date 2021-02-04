@@ -2,8 +2,6 @@
 <!-- 
 React-Router怎么获取历史对象？
 
-React-Router怎么获取URL的参数？
-
 React-Router怎么设置重定向？
 
 源码：https://github.com/ReactTraining/react-router
@@ -218,5 +216,66 @@ const App = () => (
 ------------------------------------------------------------------------------------------------------
 
 
+## `8、React-Router 怎么传递参数？`
 
+- 1.通配符传参
+
+    Route定义方式：
+    ```js
+    <Route path='/path/:name' component={Path}/>
+    ```
+
+    Link组件：
+    ```js
+    <Link to="/path/通过通配符传参">通配符</Link>
+    ```
+
+    参数获取：
+    ```js
+    this.props.match.params.name
+    ```
+
+    特点：刷新页面时不会丢失，但是会拼接在URL中，只能传字符串，如果需要传对象的话，可以使用`JSON.stringify()/JSON.parse()`。
+
+- 通过 `<Link>` 中的 search
+
+    Link组件：
+    ```js
+    <Link className="link" to={{pathname:'/path',search:'?a=1'}}>path</Link>
+    ```
+
+    参数获取：
+        ```js
+        this.props.location.search
+        ```
+
+    特点：只能传字符串，且刷新页面时不会丢失，但是会拼接在URL中，只能传字符串，如果需要传对象的话，可以使用`JSON.stringify()/JSON.parse()`。
+
+- 通过 `<Link>` 中的 state
+
+    Link组件：
+    ```js
+    <Link className="link" to={{pathname:'/path',state:{text:'text'}}}>path</Link>
+    ```
+
+    参数获取：
+        ```js
+        this.props.location.state
+        ```
+
+    特点：可传对象，使用场景仅限于从主页面进入子页面场景（可在子页面刷新），单独进去子页面失效
+
+- 通过 `<Link>` 中的 query
+  
+    Link组件：
+    ```js
+    <Link className="link" to={{pathname:'/path',query:"b=2"}}>path</Link>
+    ```
+
+    参数获取：
+        ```js
+        this.props.location.query
+        ```
+
+    特点：可传对象，使用场景仅限于从主页面进入子页面场景（可在子页面刷新），单独进去子页面失效
 
