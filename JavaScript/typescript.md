@@ -20,3 +20,5 @@ TypeScript 是 JavaScript 的超集，与现存的 JavaScript 代码有非常高
 
     - 新概念：TypeScript 中引入的类型(Types)、类(Classes)、泛型(Generics)、接口(Interfaces)以及枚举(Enums)，这些概念如果之前没有接触过强类型语言的话，就需要增加一些学习成本
 
+
+![logo](http://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Markdown-mark.svg/208px-Markdown-mark.svg.png)

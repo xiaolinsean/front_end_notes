@@ -7,6 +7,9 @@ React-Router怎么设置重定向？
 源码：https://github.com/ReactTraining/react-router
  -->
 
+{% raw %}
+
+
 ## `1、React Router v4 中使用 <Switch>关键字的作用？`
 
 
@@ -241,7 +244,7 @@ const App = () => (
 
     Link组件：
     ```js
-    <Link className="link" to={{pathname:'/path',search:'?a=1'}}>path</Link>
+        <Link className="link" to={{pathname:'/path',search:'?a=1'}}>path</Link>
     ```
 
     参数获取：
@@ -279,3 +282,6 @@ const App = () => (
 
     特点：可传对象，使用场景仅限于从主页面进入子页面场景（可在子页面刷新），单独进去子页面失效
 
+
+
+{% endraw %}
