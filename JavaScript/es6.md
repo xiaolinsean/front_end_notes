@@ -258,7 +258,6 @@ for(let i in arr){
 // 0
 // 1
 // 2
-// d
 
 for(let i of arr){
     console.log(i);

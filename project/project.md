@@ -1,6 +1,6 @@
 - [1、项目中的用户操作记录及错误信息收集](#1项目中的用户操作记录及错误信息收集)
 - [2、组件库搭建注意事项  // TODO](#2组件库搭建注意事项---todo)
-- [3、node-modules 升级 或 webpack 升级 //TODO](#3node-modules-升级-或-webpack-升级-todo)
+- [3、node-modules 升级 或 webpack 升级](#3node-modules-升级-或-webpack-升级)
 - [4、项目结构组织？ // TODO](#4项目结构组织--todo)
 - [5、hybrid 混合开发、纯原生、webApp 之间的区别？](#5hybrid-混合开发纯原生webapp-之间的区别)
 - [6、hybrid 混合开发中 H5 和原生客户端如何通信？](#6hybrid-混合开发中-h5-和原生客户端如何通信)
@@ -55,22 +55,50 @@
 - 上报方式
   - 通过 Ajax 发送数据
   - 动态创建 img 标签的形式
-  
+
+- [MITO 一款轻量级的收集页面的用户点击行为、路由跳转、接口报错、代码报错、并上报服务端的SDK](https://github.com/clouDr-f2e/mitojs)
 
 参考:[前端异常监控](https://juejin.cn/post/6844903641619365902)、[前端性能和错误监控](https://juejin.im/post/6844903998412029959)
 
 
-
-
-
-
-
-
-
 ## 2、组件库搭建注意事项  // TODO
 
-## 3、node-modules 升级 或 webpack 升级 //TODO
 
+## 3、node-modules 升级 或 webpack 升级
+
+我们安装了某个 `modules` 后，在 `package.json` 和 `package-lock.json` 中都能看到安装模块对应的版本描述，默认更新规则是 `^1.3.1` （这对于 npm 版本控制规则意味着 npm 可以更新到补丁版本和次版本：即 1.3.2、1.4.0、依此类推，但不更新主版本）。
+
+`package-lock.json` 中记录的是本地安装的真是版本号，`package.json` 中只是记录更新规则，因此有可能两处的版本号不一样，可能出现 `package.json` 中是 `^1.3.1`，但是 `package-lock.json` 中是 `1.4.0`。
+
+如果有新的次版本或补丁版本，并且输入了 `npm update`，则已安装的版本会被更新，并且 `package-lock.json` 文件会被新版本填充。 `package.json` 则保持不变。
+
+通过运行 `npm outdated` 可以查看 `modules` 的版本情况，包含当前版本、升级后的版本，以及最新的版本
+
+我们可以通过 `npm update` 将当前版本升级到 升级后的版本，但是这种方法不能跨主版本升级。因为主版本的修改一般都会引起较大的更改，默认更新的话可能会引起问题。
+
+若要将所有软件包更新到新的主版本，则全局地安装 npm-check-updates 软件包：
+
+```shell
+npm install -g npm-check-updates
+```
+
+然后运行：
+
+```shell
+ncu -u
+```
+
+这会升级 `package.json` 文件的 `dependencies` 和 `devDependencies` 中的所有版本，以便 `npm` 可以安装新的主版本。
+
+现在可以运行更新了：
+
+```shell
+npm update
+```
+
+参考：[将所有 Node.js 依赖包更新到最新版本](http://nodejs.cn/learn/update-all-the-nodejs-dependencies-to-their-latest-version)
+
+---------------------------------------------------------------------------------------------
 ## 4、项目结构组织？ // TODO
 
 ## 5、hybrid 混合开发、纯原生、webApp 之间的区别？

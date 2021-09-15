@@ -9,9 +9,9 @@
 - [9、js 中的事件机制](#9js-中的事件机制)
 - [10、js 中的事件委托](#10js-中的事件委托)
 - [11、有哪些跨域的方法](#11有哪些跨域的方法)
-- [12、谈谈对 Function 中的 arguments的理解](#12谈谈对-function-中的-arguments的理解)
+- [12、谈谈对 Function 中的 arguments 的理解](#12谈谈对-function-中的-arguments-的理解)
 - [13、说下 offsetWith 和 clientWidth、offsetHeight 和 clientHeight 的区别，说说 offsetTop，offsetLeft，scrollWidth、scrollHeight 属性都是干啥的](#13说下-offsetwith-和-clientwidthoffsetheight-和-clientheight-的区别说说-offsettopoffsetleftscrollwidthscrollheight-属性都是干啥的)
-- [14、cookie 和session 的区别](#14cookie-和session-的区别)
+- [14、cookie 和 session 的区别](#14cookie-和-session-的区别)
 - [15、javaScript中的作用域和作用域链](#15javascript中的作用域和作用域链)
 - [16、变量声明提升和函数声明提升](#16变量声明提升和函数声明提升)
 - [17、AMD，CMD，CommonJs，ES6 Module 的区别？](#17amdcmdcommonjses6-module-的区别)
@@ -21,7 +21,7 @@
 - [21、JavaScript 中哪些情况会出现 内存泄漏，应该如何避免？](#21javascript-中哪些情况会出现-内存泄漏应该如何避免)
 - [22、js 中如何自定义事件？](#22js-中如何自定义事件)
 - [23、js 中什么是深拷贝和浅拷贝，怎么对数组或者对象进行深拷贝？](#23js-中什么是深拷贝和浅拷贝怎么对数组或者对象进行深拷贝)
-- [24、setTimeout 和 requestAnimationFrame // TODO](#24settimeout-和-requestanimationframe--todo)
+- [24、setTimeout 和 requestAnimationFrame 、requestIdleCallback](#24settimeout-和-requestanimationframe-requestidlecallback)
 - [25、js 中的执行上下文 // TODO](#25js-中的执行上下文--todo)
 - [26、谈谈对函数柯里化的理解](#26谈谈对函数柯里化的理解)
 - [`27、谈谈对函数式编程的理解？` // TODO](#27谈谈对函数式编程的理解--todo)
@@ -70,7 +70,7 @@
 ## 3、js 数据类型及类型检测 
 
     基本数据类型六种：number、string、undefined、null、boolean，Symbol；
-    复杂数据类型（引用数据类型）：object，（Arry(数组)、Function(函数)、Date等都归为object）；
+    复杂数据类型（引用数据类型）：object，（Array(数组)、Function(函数)、Date等都归为object）；
 
     类型检测：
     （1）typeof=>string：无法判断具体的引用类型数据，如数组
@@ -192,10 +192,19 @@
 ## 8、如何改变 this 指向
 
     （1）可以使用局部变量来代替this指针，即常用的 var that = this;
-    （2）call 第一个参数为this指向的对象，后面的为函数调用的入参
-    （3）apply 第一个参数为this指向的对象，第二个参数是一个数组，为函数调用的入参
+    （2）call 第一个参数为this指向的对象，后面传入的是一个参数列表，当第一个参数为null、undefined的时候，默认指向window。
+    （3）apply 第一个参数为this指向的对象，第二个参数是一个数组，为函数调用的入参，当第一个参数为null、undefined的时候，默认指向window。
     （4）bind 第一个参数为this指向的对象，后面的为函数调用的入参；
     需要注意的是：call()和apply()是执行函数的方式，直接调用就会执行，而bind()是返回一个新的函数，必须调用才会执行，即bind(this,arg1,arg2)()
+
+    function fn(a,b,c){
+        console.log(a,b,c);
+    }
+    let f1 = fn.bind(null,4,5);
+    fn.call(null,1,2,3); // 1,2,3
+    f1(1,2,3); // 4,5,1
+
+    call 是把第二个及以后的参数作为 fn 方法的实参传进去，而 f1 方法的实参实则是在 bind 中参数的基础上再往后排。
 
     手动实现bind
     Function.prototype.customBind = function (ctx, ...args) {
@@ -270,7 +279,7 @@
 
 
 参考：[九种跨域方式实现原理（完整版）](https://juejin.cn/post/6844903767226351623)
-## 12、谈谈对 Function 中的 arguments的理解
+## 12、谈谈对 Function 中的 arguments 的理解
 
     arguments 是一个类数组对象，此对象包含传递给函数的每个参数，第一个参数在索引0处。因此可以用 arguments[0] 来获取第一个参数,它类似于 Array，但除了length属性和索引元素之外没有任何Array属性。
 
@@ -299,7 +308,7 @@
 
 参考：[搞清clientHeight、offsetHeight、scrollHeight、offsetTop、scrollTop](https://blog.csdn.net/qq_35430000/article/details/80277587)
 
-## 14、cookie 和session 的区别 
+## 14、cookie 和 session 的区别 
 
     1、cookie数据存放在客户的浏览器上，session数据放在服务器上。
     2、cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗
@@ -322,6 +331,13 @@
 
     
     作用域链：当查找变量的时候，会先从当前上下文的变量对象中查找，如果没有找到，就会从父级(词法层面上的父级)执行上下文的变量对象中查找，一直找到全局上下文的变量对象，也就是全局对象。这样由多个执行上下文的变量对象构成的链表就叫做作用域链。
+
+    通过`console.dir()` 可以打印出对象的全部属性（其中包括[scopes]），scopes是一个数组，包括了该对象（函数）的整条作用域链
+    [[Scopes]]: Scopes[3]
+        0: Closure (getA) {a: 2}  // 闭包里的变量
+        1: Script {arr: Array(16)} // <Script></Script>标签中用let定义的变量（如果是用var定义，则为全局变量）
+        2: Global {window: Window, self: Window, document: document, name: "", location: Location, …} // 全局变量
+
 
 参考：[https://zhuanlan.zhihu.com/p/69910449](https://zhuanlan.zhihu.com/p/69910449)
 
@@ -384,8 +400,10 @@
         setInterval()
         setTimeout()
         postMessage
+        主js、UI渲染、setImmediate、requestAnimationFarme、I/O等
 
     以下事件属于微任务
+        process.nextTick
         new Promise()
         async await
         new MutaionObserver()（DOM变化监听）
@@ -497,7 +515,7 @@
             if (typeof target === 'object') {
                 let cloneTarget = Array.isArray(target) ? [] : {};
                 for (const key in target) {
-                    cloneTarget[key] = clone(target[key]);
+                    cloneTarget[key] = deepClone(target[key]);
                 }
                 return cloneTarget;
             } else {
@@ -507,11 +525,24 @@
 
 更多数据类型的考虑和性能优化可参考:[https://juejin.im/post/6844903929705136141](https://juejin.im/post/6844903929705136141)
 
-## 24、setTimeout 和 requestAnimationFrame // TODO
+## 24、setTimeout 和 requestAnimationFrame 、requestIdleCallback
 
-    
+- setTimeout 或 setInterval 是使用定时器来触发回调函数的，而定时器并无法保证能够准确无误的执行，有许多因素会影响它的运行时机，比如说：当有同步代码执行时，会先等同步代码执行完毕，setTimeout 或 setInterval 属于宏任务（macrotask），其优先级在微任务（microtask）之后，等微任务队列里清空后，才会轮到自己执行。所以其执行时间是不确定的；
 
+- requestAnimationFrame： 由系统来决定回调函数的执行时机的，会请求浏览器在下一次重新渲染之前执行回调函数，其执行时间与屏幕的刷新率保持一致，例如屏幕的刷新率为 60Hz ，那么就是每 16.67ms 执行一次。
 
+- requestIdleCallback: 表示浏览器在执行完一帧内的基本任务后，如果还有时间空余，则会执行 requestIdleCallback 里注册的任务，与 requestAnimationFrame 在每一帧都会执行不同，requestIdleCallback 是捡浏览器空闲来执行任务，如此一来，假如浏览器一直处于非常忙碌的状态，requestIdleCallback 注册的任务有可能永远不会执行。此时可通过设置 timeout 表示超过这个时间后，如果任务还没执行，则强制执行，不必等待空闲。
+
+```js
+let rotate = 0;
+const div = document.querySelector(".div");
+const run = () => {
+ div.style.transform = `rotate(${rotate += 10}deg`;
+ window.requestAnimationFrame(run);
+};
+run();
+```
+参考：[requestIdleCallback和requestAnimationFrame详解](https://www.jianshu.com/p/2771cb695c81)
 
 ## 25、js 中的执行上下文 // TODO
 

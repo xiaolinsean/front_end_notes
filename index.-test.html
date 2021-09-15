@@ -4,16 +4,29 @@
 <meta charset="utf-8">
 <title>index-test</title>
 <style>
-    *{
+    * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+    }
+    .contain{
+        display: inline-block;
+        width: 800px;
+        height: 600px;
+    }
+    .div{
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        border: 1px solid red;
+        padding-top: 50%;
+        /* transform: rotate(45deg); */
     }
 </style>
 </head>
 <body>
 <div class="contain">
-    <img src="../a.png" alt="">
+    <div class="div"></div>
 </div>
 
 <script>
@@ -149,17 +162,46 @@
     console.log(arr);
     console.log(mergeSort(arr));
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@zyf2e/mitojs/dist/index.min.js"></script>
+
 <script>
-    MITO.init({
-      // 服务器地址
-      dsn: 'http://test.com/error',
-      // 项目对应apikey
-      apikey: '123-2223-123-123',
-    });
-</script>
-<script>
+// console.log(1); 
+// new Promise(function (resolve, reject) { 
+//     reject(); 
+//     resolve(); 
+// }).then( 
+//     function () { 
+//         console.log(2); 
+//     }, 
+//     function () { 
+//         console.log(3); 
+//     } 
+// ); 
+// console.log(4);
+
+var a = 1;
+var getName = function(){
+    console.log('a');
+}
+function getName (){
+    console.log('b');
+}
+function getA() {
     console.log(a);
+    var a = 2;
+    return () => {
+        console.log(a);
+    }
+}
+function getA2() {
+    console.log(a);
+    let a = 2;
+}
+getName();
+getA();
+// getA2();
+console.dir(getA());
+
+
 </script>
 </body>
 </html>
