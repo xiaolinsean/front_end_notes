@@ -66,8 +66,6 @@
         class A {}
         A instanceof Function // true
 
-        class 继承底层就是使用的寄生组合式继承方式实现的
-
 
 ## 3、js 数据类型及类型检测 
 

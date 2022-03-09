@@ -1,0 +1,904 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>webpack · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="webpack常见错误.html" />
+    
+    
+    <link rel="prev" href="vscode-extend.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../css/css_notes.html">
+            
+                <a href="../css/css_notes.html">
+            
+                    
+                    css
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../JavaScript/readme.md">
+            
+                <span>
+            
+                    
+                    JavaScript
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../JavaScript/JavaScript.html">
+            
+                <a href="../JavaScript/JavaScript.html">
+            
+                    
+                    JavaScript
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../JavaScript/typescript.md">
+            
+                <span>
+            
+                    
+                    typescript
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../JavaScript/es6.html">
+            
+                <a href="../JavaScript/es6.html">
+            
+                    
+                    es6
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../JavaScript/array.html">
+            
+                <a href="../JavaScript/array.html">
+            
+                    
+                    array
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../JavaScript/ArrayOprations.html">
+            
+                <a href="../JavaScript/ArrayOprations.html">
+            
+                    
+                    ArrayOprations
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../react/readme.md">
+            
+                <span>
+            
+                    
+                    react
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../react/react.html">
+            
+                <a href="../react/react.html">
+            
+                    
+                    react
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../react/react-router.html">
+            
+                <a href="../react/react-router.html">
+            
+                    
+                    react-router
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../react/redux.html">
+            
+                <a href="../react/redux.html">
+            
+                    
+                    redux
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
+            
+                <span>
+            
+                    
+                    [工程化]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="npm.html">
+            
+                <a href="npm.html">
+            
+                    
+                    npm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="vscode-extend.html">
+            
+                <a href="vscode-extend.html">
+            
+                    
+                    vscode-extend
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.1.3" data-path="webpack.html">
+            
+                <a href="webpack.html">
+            
+                    
+                    webpack
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="webpack常见错误.html">
+            
+                <a href="webpack常见错误.html">
+            
+                    
+                    webpack常见错误
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../coding/coding.html">
+            
+                <a href="../coding/coding.html">
+            
+                    
+                    coding
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="../coding/coding.html">
+            
+                <a href="../coding/coding.html">
+            
+                    
+                    coding
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="../coding/program.html">
+            
+                <a href="../coding/program.html">
+            
+                    
+                    program
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../design-pattern/design-pattern.html">
+            
+                <a href="../design-pattern/design-pattern.html">
+            
+                    
+                    design-pattern
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../design-pattern/design-pattern.html">
+            
+                <a href="../design-pattern/design-pattern.html">
+            
+                    
+                    design-pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../network/network.html">
+            
+                <a href="../network/network.html">
+            
+                    
+                    network
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../nginx/nginx.html">
+            
+                <a href="../nginx/nginx.html">
+            
+                    
+                    nginx
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../project/project.html">
+            
+                <a href="../project/project.html">
+            
+                    
+                    project
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1.1" data-path="../project/build-component-library.html">
+            
+                <a href="../project/build-component-library.html">
+            
+                    
+                    build-component-library
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.2" data-path="../project/optimization.html">
+            
+                <a href="../project/optimization.html">
+            
+                    
+                    optimization
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.3" data-path="../project/project.html">
+            
+                <a href="../project/project.html">
+            
+                    
+                    project
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="../typescript/typescript.html">
+            
+                <a href="../typescript/typescript.html">
+            
+                    
+                    typescript
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="11.1" >
+            
+                <span>
+            
+                    
+                    version-manage
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1.1" data-path="../version-manage/git.html">
+            
+                <a href="../version-manage/git.html">
+            
+                    
+                    git
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" >
+            
+                <span>
+            
+                    
+                    vue
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1.1" data-path="../vue/vue.html">
+            
+                <a href="../vue/vue.html">
+            
+                    
+                    vue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.1.2" data-path="../vue/react与vue对比.html">
+            
+                <a href="../vue/react与vue对比.html">
+            
+                    
+                    vue
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >webpack</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <ul>
+<li><a href="#1packagejson-&#x7248;&#x672C;&#x9009;&#x62E9;&#x4EE5;&#x53CA;-package-lockjson-&#x7684;&#x4F5C;&#x7528;">1&#x3001;package.json &#x7248;&#x672C;&#x9009;&#x62E9;&#x4EE5;&#x53CA; package-lock.json &#x7684;&#x4F5C;&#x7528;&#xFF1F;</a></li>
+<li><a href="#2&#x8BF4;&#x4E00;&#x4E0B;-webpack-&#x4E2D;-css-loader-&#x548C;-style-loader-&#x7684;&#x533A;&#x522B;">2&#x3001;&#x8BF4;&#x4E00;&#x4E0B; webpack &#x4E2D; css-loader &#x548C; style-loader &#x7684;&#x533A;&#x522B;</a></li>
+<li><a href="#3&#x8BF4;&#x4E00;&#x4E0B;-webpack-&#x4E2D;-file-loader-&#x548C;-url-loader-&#x7684;&#x533A;&#x522B;">3&#x3001;&#x8BF4;&#x4E00;&#x4E0B; webpack &#x4E2D; file-loader &#x548C; url-loader &#x7684;&#x533A;&#x522B;</a></li>
+<li><a href="#4webpack-&#x6253;&#x5305;&#x65F6;-hash-&#x7801;-&#x6709;&#x54EA;&#x51E0;&#x79CD;">4&#x3001;Webpack &#x6253;&#x5305;&#x65F6; Hash &#x7801; &#x6709;&#x54EA;&#x51E0;&#x79CD;&#xFF1F;</a></li>
+<li><a href="#5import--button--from-antd&#x6253;&#x5305;&#x7684;&#x65F6;&#x5019;&#x53EA;&#x6253;&#x5305;-button&#x6309;&#x9700;&#x52A0;&#x8F7D;&#x662F;&#x600E;&#x4E48;&#x505A;&#x5230;&#x7684;">5&#x3001;import { Button } from &apos;antd&apos;&#xFF0C;&#x6253;&#x5305;&#x7684;&#x65F6;&#x5019;&#x53EA;&#x6253;&#x5305; button&#xFF0C;&#x6309;&#x9700;&#x52A0;&#x8F7D;&#xFF0C;&#x662F;&#x600E;&#x4E48;&#x505A;&#x5230;&#x7684;</a></li>
+<li><a href="#6webpack-&#x6253;&#x5305;&#x51FA;&#x6765;&#x7684;&#x4F53;&#x79EF;&#x592A;&#x5927;&#x5982;&#x4F55;&#x4F18;&#x5316;&#x4F53;&#x79EF;--todo">6&#x3001;Webpack &#x6253;&#x5305;&#x51FA;&#x6765;&#x7684;&#x4F53;&#x79EF;&#x592A;&#x5927;&#xFF0C;&#x5982;&#x4F55;&#x4F18;&#x5316;&#x4F53;&#x79EF;&#xFF1F; // TODO</a></li>
+<li><a href="#7babelpolyfillbabelruntimebabelplugin-transform-runtime-&#x7684;&#x533A;&#x522B;&#x548C;&#x8054;&#x7CFB;">7&#x3001;@babel/polyfill&#x3001;@babel/runtime&#x3001;@babel/plugin-transform-runtime &#x7684;&#x533A;&#x522B;&#x548C;&#x8054;&#x7CFB;&#xFF1F;</a></li>
+<li><a href="#8packagejson-&#x4E2D;&#x7684;-main-&#x548C;-module-&#x5B57;&#x6BB5;">8&#x3001;package.json &#x4E2D;&#x7684; main &#x548C; module &#x5B57;&#x6BB5;&#xFF1F;</a></li>
+<li><a href="#9dependencies--devdependencies-&#x548C;-peerdependencies">9&#x3001;dependencies &#x3001; devDependencies &#x548C; peerDependencies&#xFF1F;</a></li>
+</ul>
+<h2 id="1&#x3001;packagejson-&#x7248;&#x672C;&#x9009;&#x62E9;&#x4EE5;&#x53CA;-package-lockjson-&#x7684;&#x4F5C;&#x7528;&#xFF1F;">1&#x3001;package.json &#x7248;&#x672C;&#x9009;&#x62E9;&#x4EE5;&#x53CA; package-lock.json &#x7684;&#x4F5C;&#x7528;&#xFF1F;</h2>
+<ul>
+<li>&#x2018;^16.8.0&#x2019; &#x8868;&#x793A;&#x5B89;&#x88C5;16.x.x&#x7684;&#x6700;&#x65B0;&#x7248;&#x672C;&#xFF0C;&#x5B89;&#x88C5;&#x65F6;&#x4E0D;&#x6539;&#x53D8;&#x5927;&#x7248;&#x672C;&#x53F7;&#x3002;</li>
+<li>&#x2018;~16.8.0&#x2019; &#x8868;&#x793A;&#x5B89;&#x88C5;16.8.x&#x7684;&#x6700;&#x65B0;&#x7248;&#x672C;&#xFF0C;&#x5B89;&#x88C5;&#x65F6;&#x4E0D;&#x6539;&#x53D8;&#x5927;&#x7248;&#x672C;&#x53F7;&#x548C;&#x6B21;&#x8981;&#x7248;&#x672C;&#x53F7;&#x3002;</li>
+<li><p>&#x2018;16.8.0&#x2019; &#x8868;&#x793A;&#x5B89;&#x88C5;&#x6307;&#x5B9A;&#x7684;&#x7248;&#x672C;&#x53F7;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5B89;&#x88C5;16.8.0&#x7248;&#x672C;&#x3002;</p>
+</li>
+<li><p>package-lock.json&#x91CC;&#x4F1A;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x4F9D;&#x8D56;&#x7BA1;&#x7406;&#x6811;&#xFF0C;&#x91CC;&#x9762;&#x8BB0;&#x5F55;&#x7740;&#x6BCF;&#x4E2A;&#x4F9D;&#x8D56;&#x7684;&#x786E;&#x5B9A;&#x7248;&#x672C;, &#x83B7;&#x53D6;&#x5730;&#x5740;&#x548C;&#x54C8;&#x5E0C;&#x503C;&#x7B49;&#x4FE1;&#x606F;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x4FDD;&#x8BC1;&#x4E86;&#x6BCF;&#x6B21;&#x5B89;&#x88C5;&#x4E0B;&#x8F7D;&#x7684;&#x4F9D;&#x8D56;&#x7248;&#x672C;&#x90FD;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;</p>
+</li>
+</ul>
+<hr>
+<h2 id="2&#x3001;&#x8BF4;&#x4E00;&#x4E0B;-webpack-&#x4E2D;-css-loader-&#x548C;-style-loader-&#x7684;&#x533A;&#x522B;">2&#x3001;&#x8BF4;&#x4E00;&#x4E0B; webpack &#x4E2D; css-loader &#x548C; style-loader &#x7684;&#x533A;&#x522B;</h2>
+<ul>
+<li>&#xFF08;1&#xFF09; style-loader: &#x4F7F;&#x7528;<style>将 css-loader 内部样式注入到我们的HTML页面</li>
+<li>（2） css-loader： 解析了css文件里面的css代码，以及 css 中各依赖关系，比如：import / require（） @import / url 引入的内容</li>
+</ul>
+<p>webpack解析是自下而上的，所以会先通过 css-loader 解析 css 代码， 然后通过 style-loader 注入到 HTML 页面中。如果需要将 css 单独抽离出一个文件，可以使用 extract-text-webpack-plugin（webpack v4 之前）和 mini-css-extract-plugin （webapck v4）</p>
+<hr>
+<h2>3、说一下 webpack 中 file-loader 和 url-loader 的区别</h2>
+<ul>
+<li>（1）<code>file-loader</code>: 对应规则的文件，复制一份到打包之后的文件夹，生成新的文件名，并传给项目的输入文件使用；</li>
+<li>（2）<code>url-loader</code>: url-loader 封装了 file-loader， 安装了 url-loader 就不需要再安装 file-loader 了。url-loader工作分两种情况：1.文件大小小于limit参数，url-loader将会把文件转为DataURL（base64）；2.文件大小大于limit，url-loader会调用file-loader进行处理，参数也会直接传给file-loader。</li>
+</ul>
+<p>因此，再处理项目中图片等文件时，我们一般使用 url-loader， 设置合适的 limit 的值: 设置过大会导致js文件过大；设置过小会导致 http 请求次数过多。</p>
+<hr>
+<h2>4、Webpack 打包时 Hash 码 有哪几种？</h2>
+<ul>
+<li><p>（1）hash: 每一次构建都会生成唯一的 hash 值，且当前构建的所有文件添加的 hash 值都一样；</p>
+</li>
+<li><p>（2）chunkhash: chunkhash 可以理解成入口 hash，即改入口中依赖的某个文件改变了，那么该入口所有生成文件的 hash 值都会改变，常见的就是 css 文件变动了，对应的 js 文件 hash 值也会改变。</p>
+</li>
+<li><p>（3）contenthash: 内容 hash， 即该 hash 值只跟当前文件的 content 有关， content 变化了 hash 值才会改变。</p>
+</li>
+</ul>
+<p>因此，我们给图片和 css 文件添加 hash 值用于缓存时，应该使用 contenthash。</p>
+<hr>
+<h2>5、import { Button } from &#39;antd&#39;，打包的时候只打包 button，按需加载，是怎么做到的</h2>
+<p>使用 babel-plugin-import， </p>
+<pre><code class="lang-js">{ &quot;libraryName&quot;: &quot;antd&quot;, style: true }：
+</code></pre>
+<p>将 </p>
+<pre><code class="lang-js">import { Button } from &#39;antd&#39;;
+</code></pre>
+<p>编译成：</p>
+<pre><code class="lang-js">var _button = require(&#39;antd/lib/button&#39;);
+require(&#39;antd/lib/button/style&#39;);
+
+// antd/lib/button/style 目录下有 index.js 和 css.js 两个样式入口文件，分别对应 less 和 css 编译选项
+</code></pre>
+<p>参考：<a href="https://www.cnblogs.com/axuebin/p/babel-plugin-import.html">简单实现 babel-plugin-import 插件</a></p>
+<hr>
+<h2>6、Webpack 打包出来的体积太大，如何优化体积？ // TODO</h2>
+<ul>
+<li><p>css 篇</p>
+<ul>
+<li><p>单独提取css（公共）文件 MiniCssExtractPlugin</p>
+</li>
+<li><p>压缩css optimize-css-assets-webpack-plugin (配合 cssnano 配置压缩参数)</p>
+</li>
+</ul>
+</li>
+<li><p>js 篇</p>
+<ul>
+<li><p>压缩 js 代码：uglifyjs-webpack-plugin</p>
+</li>
+<li><p>提取公共代码：splitChunks</p>
+</li>
+</ul>
+</li>
+<li><p>html 压缩： html-webpack-plugin 中配置</p>
+</li>
+</ul>
+<hr>
+<h2>7、@babel/polyfill、@babel/runtime、@babel/plugin-transform-runtime 的区别和联系？</h2>
+<ul>
+<li><p>@babel/polyfill：通过改写全局prototype的方式实现，会导致污染了全局环境，我们需要手动引入，在编译时自动引入对应的core-js；</p>
+</li>
+<li><p>@babel/runtime：提供编译模块的工具函数（core-js 、regenerator等），需要在使用到的地方手动引入，不会造成全局环境的污染，安装时<code>--save</code>；</p>
+</li>
+<li><p>@babel/plugin-transform-runtime： 依赖 @babel/runtime ，利用 plugin 自动识别并替换代码中的新特性，你不需要再引入，而是按需替换，检测到你需要哪个，就引入哪个 polyfill, 安装时<code>--save-dev</code>；</p>
+</li>
+</ul>
+<p>参考：<a href="https://www.cnblogs.com/L-xmin/p/12493824.html">Babel之babel-polyfill、babel-runtime、transform-runtime详解</a></p>
+<hr>
+<h2>8、package.json 中的 main 和 module 字段？</h2>
+<p>main 和 module 主要是为了区分 CommonJS 规范和 ES6 的 module 新特性。</p>
+<ul>
+<li><p>main: 针对的 CommonJS 规范，运行时加载（其实是加载的是 exports 对象的某个属性），</p>
+</li>
+<li><p>module： 针对的 ES6 的 module 新特性，编译时加载，这样在编译时即可分析出对应模块中有哪些方法是使用到的，这样更利于 Tree-Shaking 。</p>
+</li>
+</ul>
+<p>由于在早期很多 npm 包都是遵循 CommonJS 规范的，统一取得 main 字段指定的文件作为入口。为了引入对 ES6 的 module 新特性的支持，同时也支持原有的 CommonJS 规范，所以就引入了 module 字段。</p>
+<p>参考：<a href="https://segmentfault.com/a/1190000019438150">package.json 中 你还不清楚的 browser，module，main 字段优先级</a></p>
+<hr>
+<h2>9、dependencies 、 devDependencies 和 peerDependencies？</h2>
+<ul>
+<li><p>dependencies</p>
+<p>实际的依赖，即项目线上运行也需要的依赖项。
+<code>npm i xxx -S</code> 或者 <code>npm i xxx --save</code> 来安装一个包，并且添加到 package.json 的 dependencies 里面</p>
+</li>
+<li><p>devDependencies</p>
+<p>开发中使用的依赖，它区别于实际的依赖。也就是说，在线上状态不需要使用的依赖，就是开发依赖。最终目的是为了减少 node_modules 目录的大小以及 npm install 花费的时间。</p>
+<p><code>npm i xxx -D</code> 或者 <code>npm i xxx --save-dev</code> 来安装一个包</p>
+<p>常见的 构建工具（webpack 、gulp 等）、预处理器（less, stylus, sass, scss，babel-loader等，需注意 babel-runtime 是 dependencies）、测试工具（jest，chai等）都是安装成 devDependencies</p>
+</li>
+<li><p>peerDependencies</p>
+<p>这类主要是用于插件对于本体的依赖，插件想要自己正常运行，就需要使用者把本地依赖进来，这个主要是在自己开发和发布包的时候会用到，比如，你开发了一个基于 react 的组件，那么 peerDependencies 中就需要加入相关的 react 和 react-dom 依赖。</p>
+</li>
+</ul>
+<p>参考：<a href="https://zhuanlan.zhihu.com/p/56002037">Node.js 中的依赖管理</a></p>
+</style></li></ul>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="vscode-extend.html" class="navigation navigation-prev " aria-label="Previous page: vscode-extend">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="webpack常见错误.html" class="navigation navigation-next " aria-label="Next page: webpack常见错误">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"webpack","level":"4.1.3","depth":2,"next":{"title":"webpack常见错误","level":"4.1.4","depth":2,"path":"工程化/webpack常见错误.md","ref":"工程化/webpack常见错误.md","articles":[]},"previous":{"title":"vscode-extend","level":"4.1.2","depth":2,"path":"工程化/vscode-extend.md","ref":"工程化/vscode-extend.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"工程化/webpack.md","mtime":"2021-11-15T08:27:48.954Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-27T10:21:50.492Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

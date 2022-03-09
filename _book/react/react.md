@@ -103,9 +103,9 @@
 
     V16.3之前的版本：
 
-    初始化挂载阶段：constructor()、componentWillMount、render、componentDidMount
+    初始化挂载阶段：constructor()、componentWillMount，render，componentDidMount
 
-    更新阶段：componentWillReceiveProps、shouldComponentUpdate、componentWillUpdate、render、componentDidUpdate
+    更新阶段：componentWillReceiveProps，shouldComponentUpdate，componentWillUpdate，render，componentDidUpdate
 
     卸载阶段：componentWillUnmount
 
@@ -114,7 +114,7 @@
 
     初始化挂载阶段：constructor()、static getDerivedStateFromProps()，render，componentDidMount
 
-    更新阶段：static getDerivedStateFromProps()、shouldComponentUpdate、getSnapshotBeforeUpdate() 、render、componentDidUpdate
+    更新阶段：static getDerivedStateFromProps()，shouldComponentUpdate，getSnapshotBeforeUpdate() ，render，componentDidUpdate
 
     卸载阶段：componentWillUnmount
 
@@ -324,7 +324,7 @@
 
     （1）effect 第二个参数传[]，只会初始化时执行一次，模拟DidMount;
 
-    （2）利用 useRef() 生产实例变量，通过判断实例变量是否存在，来模拟 DidUpdate;
+    （2）利用 useRef() 生产实力变量，通过判断实例变量是否存在，来模拟 DidUpdate;
 
     （3）effect 中返回的函数，模拟 WillUnMount;
 
