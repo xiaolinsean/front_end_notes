@@ -141,6 +141,30 @@ server {
 
 设置反向代理主要使用 `location` 块中的 `proxy_pass`，将 `location` 匹配到的请求转发到 `proxy_pass` 设置的服务上。
 
+加 / 与不加 /
+在配置proxy_pass代理转发时，如果后面的url加/，表示绝对根路径；如果没有/，表示相对路径
+
+例如
+
+加 /
+```shell
+server_name shaochenfeng.com
+location /data/ {
+    proxy_pass http://127.0.0.1/;
+}
+```
+访问 `http://mydomain.com/data/index.html` 会转发到 `http://127.0.0.1/index.html`
+
+不加 /
+```shell
+server_name shaochenfeng.com
+location /data/ {
+    proxy_pass http://127.0.0.1;
+}
+```
+访问 `http://mydomain.com/data/index.html` 会转发到 `http://127.0.0.1/data/index.html`
+
+
 ## `4、负载均衡`
 
 负载均衡主要通过 `upstream` 模块来定义，`upstream` 模块中通过 `server` 来枚举服务器列表，在 `upstream` 模块配置完成后，要让指定的访问反向代理到服务器列表，基本配置如下：
